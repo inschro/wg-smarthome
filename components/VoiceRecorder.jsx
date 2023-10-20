@@ -2,18 +2,12 @@ import { useState } from 'react';
 
 const VoiceRecorder = () => {
   const [transcript, setTranscript] = useState('');
-
-  console.log("window: ");
-  console.log(window);
-
-  console.log("SpeechRecognition: ");
-  console.log("SpeechRecognition" in window);
-  console.log("webkitSpeechRecognition:");
-  console.log("webkitSpeechRecognition" in window);
-
-  /*return (
-    <div className='text-light hover:text-bright hover:cursor-pointer'>test</div>
-  )*/
+  
+  if(!window) { 
+    return (
+      <div className='text-light hover:text-bright hover:cursor-pointer'>test</div>
+    )
+  }
 
   let recognition = null;
   if("SpeechRecognition" in window || "webkitSpeechRecognition" in window){
