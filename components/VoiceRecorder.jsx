@@ -14,14 +14,23 @@ const VoiceRecorder = () => {
   /*return (
     <div className='text-light hover:text-bright hover:cursor-pointer'>test</div>
   )*/
-   
-  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-  const recognition = new SpeechRecognition();
+
+  let recognition = null;
+  if("SpeechRecognition" in window || "webkitSpeechRecognition" in window){
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    recognition = new SpeechRecognition();
+  }
+
+  if(!recognition){
+    return (
+      <div className='text-light'>speech recognition is not supported</div>
+    )
+  }
+
   recognition.continuous = false;
   recognition.interimResults = false;
   recognition.lang = 'de';
-
-  recognition.onresult = (event: any) => {
+  recognition.onresult = (event) => {
     let finalTranscript = '';
 
     for (let i = event.resultIndex; i < event.results.length; i++) {
