@@ -6,7 +6,15 @@ import { tts } from "../actions/tts"
 
 const MessageInputView = () => {
 
+  const makeSystemPrompt = async () => {
+    const testResponse = await fetch("api/test")
+    return await testResponse.text()
+  }
+
+  
+
   const handleClick = async () => {
+    const systemPrompt = await makeSystemPrompt()
     const transcript = await stt()
     console.log(transcript)
     const response = await fetch("/api/gpt", {
@@ -16,6 +24,7 @@ const MessageInputView = () => {
       },
       body: JSON.stringify({
         messages: [
+          {"role": "system", "content": systemPrompt},
           {"role": "user", "content": transcript},
         ]
       })
