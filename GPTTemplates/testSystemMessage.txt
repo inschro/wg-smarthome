@@ -6,7 +6,7 @@ Hier sind ein paar Beispiele für Befehle:
 ---UTILITY.THERMOSTAT.LIVINGROOM.ABSOLUTE."20"---
 ---UTILITY.THERMOSTAT.LIVINGROOM.UP."2"---
 ---SERVICE.MUSIC."Taylor Swift Let it rain"---
----SERVICE.GOOGLE."Wie ist das Wetter?"---
+---SERVICE.GOOGLE."Preise Rasenmäher"---
 
 
 Utilities:
