@@ -2,8 +2,8 @@ import { useState } from 'react';
 
 const VoiceRecorder = () => {
   const [transcript, setTranscript] = useState('');
-  
-  if(!window) { 
+
+  if(window === undefined) { 
     return (
       <div className='text-light hover:text-bright hover:cursor-pointer'>test</div>
     )
