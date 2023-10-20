@@ -12,7 +12,7 @@ const config: Config = {
         dark: '#0a0a0a',
         charcoal: '#222222',
         gray: '#333333',
-        light: '#f5f5f5',
+        light: '#d5d5d5',
         bright: '#ffffff',
         blue: '#0077cc',
         orange: '#ff6600',

@@ -3,44 +3,44 @@ import { useState } from 'react';
 const VoiceRecorder = () => {
   const [transcript, setTranscript] = useState('');
 
+  console.log("window: ");
+  console.log(window);
+
+  console.log("SpeechRecognition: ");
+  console.log("SpeechRecognition" in window);
+  console.log("webkitSpeechRecognition:");
+  console.log("webkitSpeechRecognition" in window);
+
+  /*return (
+    <div className='text-light hover:text-bright hover:cursor-pointer'>test</div>
+  )*/
+   
   const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
   const recognition = new SpeechRecognition();
-  recognition.continuous = true;
-  recognition.interimResults = true;
+  recognition.continuous = false;
+  recognition.interimResults = false;
   recognition.lang = 'de';
 
-  recognition.onresult = (event) => {
-    let interimTranscript = '';
+  recognition.onresult = (event: any) => {
     let finalTranscript = '';
 
     for (let i = event.resultIndex; i < event.results.length; i++) {
       const transcript = event.results[i][0].transcript;
       if (event.results[i].isFinal) {
         finalTranscript += transcript + ' ';
-      } else {
-        interimTranscript += transcript;
       }
     }
 
     setTranscript(finalTranscript);
   };
 
-  recognition.onerror = (event) => {
-    console.error(event.error);
-  };
-
   const startRecording = () => {
     recognition.start();
   };
 
-  const stopRecording = () => {
-    recognition.stop();
-  };
-
   return (
     <div className="text-light flex gap-3">
-      <button onClick={startRecording}>| Start Recording</button>
-      <button onClick={stopRecording}>| Stop Recording |</button>
+      <button onClick={startRecording}>record</button>
       <p>{transcript}</p>
     </div>
   );

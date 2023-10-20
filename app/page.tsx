@@ -1,5 +1,6 @@
 "use client"
 
+import Synthesis from '@/components/Synthesis'
 import VoiceRecorder from '@/components/VoiceRecorder'
 
 export default function Home() {
@@ -26,6 +27,7 @@ export default function Home() {
       Send
     </div>
     <VoiceRecorder/>
+    <Synthesis/>
     </div>
   )
 }
