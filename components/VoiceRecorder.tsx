@@ -2,10 +2,10 @@
 
 import { stt } from "../actions/stt"
 
-const LWVoiceRecorder = () => {
+const VoiceRecorder = () => {
 
-  const handleClick = () => {
-    stt()
+  const handleClick = async () => {
+    await stt().then((res) => console.log(res))
   }
 
   return (
@@ -15,4 +15,4 @@ const LWVoiceRecorder = () => {
   )
 }
 
-export default LWVoiceRecorder
+export default VoiceRecorder
