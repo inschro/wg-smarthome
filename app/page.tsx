@@ -1,4 +1,4 @@
-"use client"
+
 
 import Synthesis from '@/components/Synthesis'
 import VoiceRecorder from '@/components/VoiceRecorder'
@@ -23,10 +23,6 @@ export default function Home() {
 
   return (
     <div>
-    <div className='text-light hover:cursor-pointer' onClick={handleClick}>
-      Send
-    </div>
-    <VoiceRecorder/>
     <Synthesis/>
     </div>
   )
