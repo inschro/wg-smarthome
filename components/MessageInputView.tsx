@@ -22,6 +22,8 @@ const MessageInputView = () => {
     })
     const responseJson = await response.json()
     console.log(responseJson.content)
+    const responseText = responseJson.content
+    tts(responseText)
   }
 
   return (
