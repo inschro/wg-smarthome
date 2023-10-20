@@ -1,7 +1,7 @@
 
 
 import Synthesis from '@/components/Synthesis'
-import VoiceRecorder from '@/components/VoiceRecorder'
+import LWVoiceRecorder from '@/components/LWVoiceRecorder'
 
 export default function Home() {
 
@@ -24,6 +24,7 @@ export default function Home() {
   return (
     <div>
     <Synthesis/>
+    <LWVoiceRecorder/>
     </div>
   )
 }
