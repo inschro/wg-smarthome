@@ -9,13 +9,17 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        dark: '#0a0a0a',
+        dark: {
+          100: '#171717',
+          200: '#333333',
+          300: '#444444',
+        },
         charcoal: '#222222',
         gray: '#333333',
         light: '#d5d5d5',
         bright: '#ffffff',
-        blue: '#0077cc',
-        orange: '#ff6600',
+        primary: '#0077cc',
+        secondary: '#ff6600',
       },
     },
   },
