@@ -32,13 +32,23 @@ const MessageInputView = () => {
           rounded-full
           p-3
           text-light
+          w-full
+          flex
+          flex-row
+          justify-between
+          gap-x-2
         "
       >
         <input
           className="
             bg-primary
             outline-none
+            focus:border-b-light
+            focus:border-opacity-50
+            border-b-2
+            border-transparent
             ml-2
+            w-full
           "
           type="text" 
           value={textInput}
