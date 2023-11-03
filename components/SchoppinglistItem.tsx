@@ -40,6 +40,7 @@ const ShoppingListItem: React.FC<ShoppingListItemProps> = ({
           border-2
           checked:bg-primary
           checked:border-transparent
+          hover:cursor-pointer
           h-6
           w-6
         "

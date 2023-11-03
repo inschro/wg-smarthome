@@ -28,7 +28,7 @@ export default function Home() {
         "
       >
         {shoppingList.map((item, index) => (
-        <ShoppingListItem item={`Shopping list item ${index}`}/>
+        <ShoppingListItem key={index} item={`Shopping list item ${index}`}/>
       ))}
       </div>
       <form
