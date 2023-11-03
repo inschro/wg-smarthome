@@ -1,3 +1,4 @@
+import MessageInputView from '@/components/MessageInputView'
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
@@ -16,7 +17,28 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className='bg-dark-100'>
-      <body className={inter.className}>{children}</body>
+      <body className={`
+        ${inter.className}
+        h-screen
+        max-h-screen
+        flex
+        flex-col
+        justify-between
+      `}>
+        <div
+          className="
+            h-full
+            max-h-full
+            overflow-auto
+            scrollbar-hidden
+          "
+        >
+          {children}
+        </div>
+        <div className='m-1 mt-3'>
+          <MessageInputView />
+        </div>
+      </body>
     </html>
   )
 }

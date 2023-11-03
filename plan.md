@@ -19,7 +19,7 @@
 - [ ] Energy monitoring
 
 ## Automation
-- [ ] Scene creation
+- [X] Scene creation
 - [ ] Scheduling
 - [ ] Geofencing
 - [ ] Integration with other smart home devices

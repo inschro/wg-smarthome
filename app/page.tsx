@@ -1,8 +1,57 @@
+import DashboardCard from '@/components/DashboardCard'
 import MessageInputView from '@/components/MessageInputView'
 
 export default function Home() {
 
   return (
-    <MessageInputView />
+    <div
+      className="
+        p-4
+        space-y-4
+        overflow-y-auto
+      "
+    >
+      <DashboardCard title='Card 1'>
+        <p>Item 1</p>
+        <p>Item 2</p>
+        <p>Item 3</p>
+      </DashboardCard>
+      <DashboardCard title='Card 1'>
+        <p>Item 1</p>
+        <p>Item 2</p>
+        <p>Item 3</p>
+      </DashboardCard>
+      <DashboardCard title='Card 1'>
+        <p>Item 1</p>
+        <p>Item 2</p>
+        <p>Item 3</p>
+      </DashboardCard>
+      <DashboardCard title='Card 1'>
+        <p>Item 1</p>
+        <p>Item 2</p>
+        <p>Item 3</p>
+      </DashboardCard>
+      <DashboardCard title='Card 1'>
+        <p>Item 1</p>
+        <p>Item 2</p>
+        <p>Item 3</p>
+      </DashboardCard>
+      <DashboardCard title='Card 1'>
+        <p>Item 1</p>
+        <p>Item 2</p>
+        <p>Item 3</p>
+      </DashboardCard>
+      <DashboardCard title='Card 1'>
+        <p>Item 1</p>
+        <p>Item 2</p>
+        <p>Item 3</p>
+      </DashboardCard>
+      <DashboardCard title='Card 1'>
+        <p>Item 1</p>
+        <p>Item 2</p>
+        <p>Item 3</p>
+      </DashboardCard>
+    </div>
+    
   )
 }
