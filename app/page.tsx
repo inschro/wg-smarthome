@@ -1,5 +1,4 @@
 import DashboardCard from '@/components/DashboardCard'
-import MessageInputView from '@/components/MessageInputView'
 
 export default function Home() {
 

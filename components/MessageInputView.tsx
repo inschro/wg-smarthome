@@ -3,7 +3,7 @@
 import { PiMicrophoneBold } from "react-icons/pi"
 import { stt } from "../actions/stt"
 import { tts } from "../actions/tts"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 const MessageInputView = () => {
 
@@ -14,6 +14,10 @@ const MessageInputView = () => {
     setTextInput(text)
     tts(text)
   }
+
+  useEffect(() => {
+    window.scrollTo(0, document.body.scrollHeight)
+  }, [])
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     
