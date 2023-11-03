@@ -9,15 +9,15 @@ const MessageInputView = () => {
 
   const [textInput, setTextInput] = useState('');
 
+  useEffect(() => {
+      window.scrollTo(0, document.body.scrollHeight)
+  }, [])
+
   const handleMicrophoneClick = async () => {
     const text = await stt()
     setTextInput(text)
     tts(text)
   }
-
-  useEffect(() => {
-    window.scrollTo(0, document.body.scrollHeight)
-  }, [])
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     
@@ -35,12 +35,12 @@ const MessageInputView = () => {
           bg-primary
           rounded-full
           p-3
-          text-light
           w-full
           flex
           flex-row
           justify-between
           gap-x-2
+          h-12
         "
       >
         <input
@@ -75,8 +75,8 @@ const MessageInputView = () => {
       </form>
       <PiMicrophoneBold 
         className="
-          text-light
-          text-5xl
+          h-12
+          w-12
           p-2
           hover:cursor-pointer
           hover:text-bright

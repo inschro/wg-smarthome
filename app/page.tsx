@@ -1,7 +1,16 @@
 import DashboardCard from '@/components/DashboardCard'
+import ControlItem from '@/components/ControlItem'
 
 export default function Home() {
 
+  const dummyCards = new Array(10).fill(null).map((_, index) => (
+    <DashboardCard key={index} title={`Card ${index + 1}`}>
+      <ControlItem text="Control Item 1" />
+      <ControlItem text="Control Item 2" />
+      <ControlItem text="Control Item 3" />
+    </DashboardCard>
+  ));
+  
   return (
     <div
       className="
@@ -10,46 +19,7 @@ export default function Home() {
         overflow-y-auto
       "
     >
-      <DashboardCard title='Card 1'>
-        <p>Item 1</p>
-        <p>Item 2</p>
-        <p>Item 3</p>
-      </DashboardCard>
-      <DashboardCard title='Card 1'>
-        <p>Item 1</p>
-        <p>Item 2</p>
-        <p>Item 3</p>
-      </DashboardCard>
-      <DashboardCard title='Card 1'>
-        <p>Item 1</p>
-        <p>Item 2</p>
-        <p>Item 3</p>
-      </DashboardCard>
-      <DashboardCard title='Card 1'>
-        <p>Item 1</p>
-        <p>Item 2</p>
-        <p>Item 3</p>
-      </DashboardCard>
-      <DashboardCard title='Card 1'>
-        <p>Item 1</p>
-        <p>Item 2</p>
-        <p>Item 3</p>
-      </DashboardCard>
-      <DashboardCard title='Card 1'>
-        <p>Item 1</p>
-        <p>Item 2</p>
-        <p>Item 3</p>
-      </DashboardCard>
-      <DashboardCard title='Card 1'>
-        <p>Item 1</p>
-        <p>Item 2</p>
-        <p>Item 3</p>
-      </DashboardCard>
-      <DashboardCard title='Card 1'>
-        <p>Item 1</p>
-        <p>Item 2</p>
-        <p>Item 3</p>
-      </DashboardCard>
+      {dummyCards}
     </div>
     
   )

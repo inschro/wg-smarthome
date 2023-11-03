@@ -1,7 +1,8 @@
 import MessageInputView from '@/components/MessageInputView'
 import './globals.css'
-import type { Metadata, Viewport } from 'next'
+import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import SideMenu from '@/components/SideMenu'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -10,19 +11,13 @@ export const metadata: Metadata = {
   description: 'Smarthome Website',
 }
 
-export const viewport: Viewport = {
-  width: 'device-width',
-  initialScale: 1,
-  height: 'device-height',
-}
-
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className='bg-dark-100'>
+    <html lang="en" className='bg-dark-100 text-light'>
       <body className={`
         ${inter.className}
         h-screen
@@ -31,6 +26,7 @@ export default function RootLayout({
         flex-col
         justify-between
       `}>
+        <SideMenu/>
         <div
           className="
             h-full

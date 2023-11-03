@@ -1,4 +1,3 @@
-
 interface DashboardCardProps {
   title: string
   children: React.ReactNode
@@ -15,11 +14,12 @@ const DashboardCard: React.FC<DashboardCardProps> = ({
         bg-primary
         rounded-2xl
         p-3
-        divide-y-[1px]
+        pb-1
+        divide-y
         divide-secondary
       "
     >
-      <h2 className="text-lg text-light font-bold">{title}</h2>
+      <h2 className="text-lg font-bold">{title}</h2>
       {children}
     </div>
   )
