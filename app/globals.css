@@ -12,3 +12,10 @@
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
 }
+
+/* Custom primary component design */
+@layer components {
+    .primary {
+        @apply bg-gradient-to-tr from-[#0055aa] from-20% via-[#5857ff] via-70% to-[#0055aa] to-90%;
+    }
+}

@@ -10,8 +10,8 @@ const DashboardCard: React.FC<DashboardCardProps> = ({
   return (
     <div
       className="
+        primary
         w-full
-        bg-primary
         rounded-2xl
         p-3
         pb-1

@@ -32,7 +32,7 @@ const MessageInputView = () => {
     ">
       <form
         className="
-          bg-primary
+          primary
           rounded-full
           p-3
           w-full
@@ -45,7 +45,7 @@ const MessageInputView = () => {
       >
         <input
           className="
-            bg-primary
+            bg-inherit
             outline-none
             focus:border-b-light
             focus:border-opacity-50
@@ -75,13 +75,13 @@ const MessageInputView = () => {
       </form>
       <PiMicrophoneBold 
         className="
+          primary
           h-12
           w-12
           p-2
           hover:cursor-pointer
           hover:text-bright
           transition
-          bg-primary
           aspect-square
           rounded-full
         "

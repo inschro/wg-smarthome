@@ -34,11 +34,11 @@ export default function Home() {
       <form
         action=""
         className="
+          primary
           flex
           flex-row
           items-center
           gap-1
-          bg-primary
           rounded-full
           pl-3
           w-full
@@ -52,7 +52,7 @@ export default function Home() {
           className="
             w-full
             outline-none
-            bg-primary
+            bg-inherit
             ml-2
             focus:border-b-light
             focus:border-opacity-50

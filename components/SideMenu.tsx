@@ -51,6 +51,7 @@ const SideMenu = () => {
   return (
     <div
       className="
+        z-10
         fixed
         top-0
         right-0

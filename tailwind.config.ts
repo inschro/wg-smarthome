@@ -10,7 +10,7 @@ const config: Config = {
     extend: {
       colors: {
         dark: {
-          100: '#171717',
+          100: '#221f10',
           200: '#333333',
           300: '#444444',
         },
@@ -18,8 +18,8 @@ const config: Config = {
         gray: '#333333',
         light: '#d5d5d5',
         bright: '#ffffff',
-        primary: '#0077cc',
-        secondary: '#ff6600',
+        primary: '#0055aa',
+        secondary: '#ff4400',
       },
     },
   },

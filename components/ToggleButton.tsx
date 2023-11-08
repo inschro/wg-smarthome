@@ -1,14 +1,27 @@
 import { useState } from "react"
 
 interface ToggleButtonProps {
-  initialToggled?: boolean
+  initialToggled?: boolean,
+  onToggleOn?: () => void,
+  onToggleOff?: () => void
 }
 
 const ToggleButton: React.FC<ToggleButtonProps> = ({
   initialToggled = false,
+  onToggleOn = () => {},
+  onToggleOff = () => {}
 }) => {
 
   const [toggled, setToggled] = useState(initialToggled)
+
+  const handleToggle = () => {
+    setToggled(!toggled)
+    if (toggled) {
+      onToggleOff()
+    } else {
+      onToggleOn()
+    }
+  }
 
   return (
     <div
@@ -20,7 +33,7 @@ const ToggleButton: React.FC<ToggleButtonProps> = ({
         justify-end
         hover:cursor-pointer
       "
-      onClick={() => setToggled(!toggled)}
+      onClick={handleToggle}
     >
       <div
         className="

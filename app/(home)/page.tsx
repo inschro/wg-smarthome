@@ -19,8 +19,8 @@ export default function Home() {
         overflow-y-auto
       "
     >
+      <h1 className="text-2xl pb-2">Home</h1>
       {dummyCards}
     </div>
-    
   )
 }
