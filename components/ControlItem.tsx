@@ -11,13 +11,16 @@ const ControlItem: React.FC<ControlItemProps> = ({
 }) => {
 
   const lightOn = async () => {
-    await fetch('http://192.168.0.232/api/GWl0EP03SM0hqgcMfwoL-r0eiRyXM5ZgK18i-sS5/lights/1/state', {
+    const response = await fetch("https://cat-fact.herokuapp.com/facts/")
+    const data = await response.json()
+    console.log(data)
+    await fetch('http://192.168.0.232:80/api/GWl0EP03SM0hqgcMfwoL-r0eiRyXM5ZgK18i-sS5/lights/1/state', {
       method: 'put',
       body: JSON.stringify({
         "on": true
       })
     })
-    await fetch('http://[fe80::eeb5:faff:fe98:2403]/api/GWl0EP03SM0hqgcMfwoL-r0eiRyXM5ZgK18i-sS5/lights/2/state', {
+    await fetch('http://[fe80::eeb5:faff:fe98:2403]:80/api/GWl0EP03SM0hqgcMfwoL-r0eiRyXM5ZgK18i-sS5/lights/2/state', {
       method: 'put',
       body: JSON.stringify({
         "on": true
