@@ -14,8 +14,6 @@ const config: Config = {
           200: '#333333',
           300: '#444444',
         },
-        charcoal: '#222222',
-        gray: '#333333',
         light: '#d5d5d5',
         bright: '#ffffff',
         primary: '#0055aa',

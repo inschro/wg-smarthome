@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { useState } from "react"
 import { BsThreeDotsVertical } from "react-icons/bs"
+import { UserButton } from "@clerk/nextjs"
 
 const SideMenu = () => {
 
@@ -33,6 +34,7 @@ const SideMenu = () => {
             w-12
             h-12
             p-2
+            z-10
             bg-dark-200
             rounded-full
             cursor-pointer
@@ -42,7 +44,6 @@ const SideMenu = () => {
           "
         onClick={() => {
           setOpen(true)
-          console.log("open")
         }}
       />
     )
@@ -63,24 +64,32 @@ const SideMenu = () => {
         scrollbar-hidden
       "
     >
-      <BsThreeDotsVertical 
+      <div
         className="
-          fixed
-          top-0
-          right-0
-          w-12
-          h-12
-          p-2
-          bg-dark-200
-          rounded-full
-          cursor-pointer
-          hover:bg-dark-300
-          transition
-          hover:text-bright
+          flex
+          flex-row
+          justify-end
+          items-center
+          py-2
+          space-x-2
         "
-        onClick={() => setOpen(false)}
-      />
-      <div className="divide-y-2 divide-secondary pt-12">
+      >
+        <UserButton />
+        <BsThreeDotsVertical 
+          className="
+            w-10
+            h-10
+            bg-dark-200
+            rounded-full
+            cursor-pointer
+            hover:bg-dark-300
+            transition
+            hover:text-bright
+          "
+          onClick={() => setOpen(false)}
+        />
+      </div>
+      <div className="divide-y-2 divide-secondary">
         {sideMenuItems.map((item, index) => (
           <div
             key={index}

@@ -18,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className='bg-dark-100 text-light'>
+    <html lang="en" className="bg-[url('/images/background.bmp')] bg-repeat text-light">
       <ClerkProvider
         appearance={
           {elements: {footer: "hidden"}}
