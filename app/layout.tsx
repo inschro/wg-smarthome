@@ -3,6 +3,7 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import SideMenu from '@/components/SideMenu'
+import { ClerkProvider } from '@clerk/nextjs'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -18,29 +19,31 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className='bg-dark-100 text-light'>
-      <body className={`
-        ${inter.className}
-        h-screen
-        max-h-screen
-        flex
-        flex-col
-        justify-between
-      `}>
-        <SideMenu/>
-        <div
-          className="
-            h-full
-            max-h-full
-            overflow-auto
-            scrollbar-hidden
-          "
-        >
-          {children}
-        </div>
-        <div className='m-1 mt-3'>
-          <MessageInputView />
-        </div>
-      </body>
+      <ClerkProvider>
+        <body className={`
+          ${inter.className}
+          h-screen
+          max-h-screen
+          flex
+          flex-col
+          justify-between
+        `}>
+          <SideMenu/>
+          <div
+            className="
+              h-full
+              max-h-full
+              overflow-auto
+              scrollbar-hidden
+            "
+          >
+            {children}
+          </div>
+          <div className='m-1 mt-3'>
+            <MessageInputView />
+          </div>
+        </body>
+      </ClerkProvider>
     </html>
   )
 }

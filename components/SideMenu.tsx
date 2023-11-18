@@ -12,17 +12,14 @@ const SideMenu = () => {
     {
       name: "Home",
       href: "/",
-      onClick: () => console.log("item 0 clicked")
     },
     {
       name: "Einkaufsliste",
       href: "/shoppinglist",
-      onClick: () => console.log("item 1 clicked")
     },
     {
       name: "Einstellungen",
       href: "/settings",
-      onClick: () => console.log("item 2 clicked")
     }
   ]
 
@@ -43,7 +40,10 @@ const SideMenu = () => {
             transition
             hover:text-bright
           "
-        onClick={() => setOpen(true)}
+        onClick={() => {
+          setOpen(true)
+          console.log("open")
+        }}
       />
     )
   }

@@ -14,6 +14,10 @@ const ShoppingListItem: React.FC<ShoppingListItemProps> = ({
 
   const [checked, setChecked] = useState(isChecked)
 
+  const handleCheckboxChange = () => {
+    // nothing
+  }
+
   return (
     <div
       className="
@@ -34,6 +38,7 @@ const ShoppingListItem: React.FC<ShoppingListItemProps> = ({
         id="item-checkbox"
         type="checkbox"
         checked={checked}
+        onChange={handleCheckboxChange}
         className="
           appearance-none
           rounded-lg
