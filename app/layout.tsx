@@ -19,7 +19,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className='bg-dark-100 text-light'>
-      <ClerkProvider>
+      <ClerkProvider
+        appearance={
+          {elements: {footer: "hidden"}}
+        }
+      >
         <body className={`
           ${inter.className}
           h-screen
