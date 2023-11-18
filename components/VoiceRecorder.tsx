@@ -1,6 +1,6 @@
 "use client"
 
-import { stt } from "../actions/stt"
+import { stt } from "../functions/stt"
 
 const VoiceRecorder = () => {
 

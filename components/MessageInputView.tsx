@@ -1,8 +1,8 @@
 "use client"
 
 import { PiMicrophoneBold } from "react-icons/pi"
-import { stt } from "../actions/stt"
-import { tts } from "../actions/tts"
+import { stt } from "../functions/stt"
+import { tts } from "../functions/tts"
 import { useEffect, useState } from "react"
 
 const MessageInputView = () => {
