@@ -11,29 +11,11 @@ const ControlItem: React.FC<ControlItemProps> = ({
 }) => {
 
   const lightOn = async () => {
-    /*
-    fetch('http://[fe80::eeb5:faff:fe98:2403]:80/api/GWl0EP03SM0hqgcMfwoL-r0eiRyXM5ZgK18i-sS5/lights/', {
-      method: 'get'
-    }).then((res) => {
-      console.log(res)
-    })*/
     
-    await fetch('http://[fe80::eeb5:faff:fe98:2403]:80/api/GWl0EP03SM0hqgcMfwoL-r0eiRyXM5ZgK18i-sS5/lights/1/state', {
-      method: 'put',
-      body: JSON.stringify({
-        "on": true
-      })
-    })
-    await fetch('http://[fe80::eeb5:faff:fe98:2403]:80/api/GWl0EP03SM0hqgcMfwoL-r0eiRyXM5ZgK18i-sS5/lights/2/state', {
-      method: 'put',
-      body: JSON.stringify({
-        "on": true
-      })
-    })
   }
 
-
   const lightOff = async () => {
+    /*
     await fetch('http://[fe80::eeb5:faff:fe98:2403]:80/api/GWl0EP03SM0hqgcMfwoL-r0eiRyXM5ZgK18i-sS5/lights/1/state', {
       method: 'put',
       body: JSON.stringify({
@@ -45,7 +27,7 @@ const ControlItem: React.FC<ControlItemProps> = ({
       body: JSON.stringify({
         "on": false
       })
-    })
+    })*/
   }
 
   return (

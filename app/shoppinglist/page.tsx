@@ -3,13 +3,29 @@
 import ShoppingListItem from "@/components/SchoppinglistItem";
 import { useEffect, useState } from "react";
 import { HiOutlinePlus } from "react-icons/hi";
+import { getShoppinglistItems } from "@/functions/getShoppinglistItems"
+import { addShoppinglistItem } from "@/functions/addShoppinglistItem";
 
 export default function Home() {
-
+  
   const [shoppingList, setShoppingList] = useState<string[]>([])
 
+  const submitNewItem = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    const inputElement: HTMLInputElement = event.currentTarget.querySelector("#newItem") as HTMLInputElement
+    const newItem: string = inputElement.value
+    addShoppinglistItem(newItem).then(() => {
+      getShoppinglistItems().then((items) => {
+        setShoppingList(items)
+        inputElement.value = ""
+      })
+    })
+  }
+
   useEffect(() => {
-    setShoppingList(["Eier", "Milch", "Mehl"])
+    getShoppinglistItems().then((items) => {
+      setShoppingList(items)
+    })
   }, [])
 
   return (
@@ -28,11 +44,11 @@ export default function Home() {
         "
       >
         {shoppingList.map((item, index) => (
-        <ShoppingListItem key={index} item={`Shopping list item ${index}`}/>
+        <ShoppingListItem key={index} item={`${shoppingList[index]}`}/>
       ))}
       </div>
       <form
-        action=""
+        onSubmit={submitNewItem}
         className="
           primary
           flex
@@ -46,7 +62,8 @@ export default function Home() {
           h-12
         "
       >
-        <input 
+        <input
+          id="newItem"
           type="text"
           placeholder="Hinzufügen..."
           className="
@@ -69,7 +86,6 @@ export default function Home() {
               hover:cursor-pointer
               hover:text-bright
               transition
-              
             "
           />
         </button>
