@@ -18,7 +18,14 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="bg-[url('/images/background.bmp')] bg-repeat text-light">
+    <html 
+      lang="en"
+      className="
+        bg-[url('/images/background.bmp')]
+        bg-repeat
+        text-light
+      "
+    >
       <ClerkProvider
         appearance={
           {elements: {footer: "hidden"}}
@@ -31,6 +38,8 @@ export default function RootLayout({
           flex
           flex-col
           justify-between
+          backdrop-blur-sm
+          backdrop-brightness-50
         `}>
           <SideMenu/>
           <div
