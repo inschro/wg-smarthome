@@ -26,11 +26,7 @@ export default function RootLayout({
         text-light
       "
     >
-      <ClerkProvider
-        appearance={
-          {elements: {footer: "hidden"}}
-        }
-      >
+      <ClerkProvider>
         <body className={`
           ${inter.className}
           h-screen

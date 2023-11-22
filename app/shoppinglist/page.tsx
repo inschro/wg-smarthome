@@ -1,3 +1,4 @@
+// app/shoppinglist/page.tsx
 "use client"
 
 import ShoppingListItem from "@/components/SchoppinglistItem";
@@ -5,10 +6,13 @@ import { useEffect, useState } from "react";
 import { HiOutlinePlus } from "react-icons/hi";
 import { getShoppinglistItems } from "@/functions/getShoppinglistItems"
 import { addShoppinglistItem } from "@/functions/addShoppinglistItem";
+import { removeShoppinglistItem } from "@/functions/removeShoppinglistItem";
 
 export default function Home() {
   
   const [shoppingList, setShoppingList] = useState<string[]>([])
+
+  const [checkedItems, setCheckedItems] = useState<string[]>([])
 
   const submitNewItem = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
@@ -18,6 +22,19 @@ export default function Home() {
       getShoppinglistItems().then((items) => {
         setShoppingList(items)
         inputElement.value = ""
+      })
+    })
+  }
+
+  const handleCheckout = async () => {
+    console.log(checkedItems)
+    shoppingList.forEach((item) => {
+      setCheckedItems
+      console.log(item)
+      removeShoppinglistItem(item).then(() => {
+        getShoppinglistItems().then((items) => {
+          setShoppingList(items)
+        })
       })
     })
   }
@@ -44,9 +61,26 @@ export default function Home() {
         "
       >
         {shoppingList.map((item, index) => (
-        <ShoppingListItem key={index} item={`${shoppingList[index]}`}/>
-      ))}
+          <ShoppingListItem 
+            key={index}
+            item={`${item}`}
+            isChecked={checkedItems.includes(item)}
+            onItemCheck={(checked) => {
+              console.warn(checkedItems)
+              console.log(checked)
+              checked ? (
+                setCheckedItems([...checkedItems, item])
+               
+              ) : (
+                
+                setCheckedItems(checkedItems.filter((checkedItem) => checkedItem !== item))
+              )
+              console.log(checkedItems)
+            }}
+          />
+        ))}
       </div>
+      <div className="hover:text-bright hover:cursor-pointer" onClick={handleCheckout}>Checkout</div>
       <form
         onSubmit={submitNewItem}
         className="

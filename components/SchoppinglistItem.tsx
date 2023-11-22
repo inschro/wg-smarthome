@@ -1,21 +1,25 @@
+// components/SchoppinglistItem.tsx
 "use client"
 
 import { useEffect, useState } from "react"
 
 interface ShoppingListItemProps {
   item: string
+  onItemCheck?: (checked: boolean) => void
   isChecked?: boolean
 }
 
 const ShoppingListItem: React.FC<ShoppingListItemProps> = ({
   item,
+  onItemCheck = () => {},
   isChecked = false,
 }) => {
 
   const [checked, setChecked] = useState(isChecked)
 
-  const handleCheckboxChange = () => {
-    // nothing
+  const handleCheck = () => {
+    setChecked(!checked)
+    onItemCheck(checked)
   }
 
   return (
@@ -29,7 +33,7 @@ const ShoppingListItem: React.FC<ShoppingListItemProps> = ({
         hover:cursor-pointer
         hover:text-bright
       "
-      onClick={() => setChecked(!checked)}
+      onClick={handleCheck}
     >
       <p>
         {item}
@@ -38,7 +42,7 @@ const ShoppingListItem: React.FC<ShoppingListItemProps> = ({
         id="item-checkbox"
         type="checkbox"
         checked={checked}
-        onChange={handleCheckboxChange}
+        onChange={() => {}}
         className="
           appearance-none
           rounded-lg
