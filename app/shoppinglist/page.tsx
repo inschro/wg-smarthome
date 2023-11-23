@@ -28,8 +28,7 @@ export default function Home() {
   }
 
   const handleCheckout = async () => {
-    console.log(checkedItems)
-    shoppingList.forEach((item) => {
+    checkedItems.forEach((item) => {
       setCheckedItems
       console.log(item)
       removeShoppinglistItem(item).then(() => {
@@ -67,14 +66,12 @@ export default function Home() {
       >
         {shoppingList.map((item, index) => (
           <ShoppingListItem 
-            key={index}
+            key={item}
             item={`${item}`}
             onItemCheck={(checked) => {
               checked ? (
                 setCheckedItems([...checkedItems, item])
-               
               ) : (
-                
                 setCheckedItems(checkedItems.filter((checkedItem) => checkedItem !== item))
               )
             }}

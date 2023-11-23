@@ -3,6 +3,7 @@
 
 import { on } from "events"
 import { useEffect, useState } from "react"
+import { useRouter } from "next/navigation"
 
 interface ShoppingListItemProps {
   item: string
@@ -19,11 +20,11 @@ const ShoppingListItem: React.FC<ShoppingListItemProps> = ({
   const [checked, setChecked] = useState(false)
 
   const handleCheck = async () => {
-    console.warn(checked)
-    setChecked(!checked)
-    console.log(checked)
-  
-    onItemCheck(!checked)
+    const prevChecked = checked
+    onItemCheck(!prevChecked)
+    setChecked(!prevChecked)
+    
+    // Continue with the rest of your code here
   }
 
   return (
@@ -43,7 +44,30 @@ const ShoppingListItem: React.FC<ShoppingListItemProps> = ({
         {item}
       </p>
       <button>
-        {checked ? "✅" : "❌"}
+        {checked ? (
+          <div
+            className="
+              w-6
+              h-6
+              rounded-lg
+              primary
+            "
+          >
+
+          </div>
+        ) : (
+          <div
+            className="
+              w-6
+              h-6
+              rounded-lg
+              border-2
+              border-light
+            "
+          >
+
+          </div>
+        )}
       </button>
     </div>
   )
