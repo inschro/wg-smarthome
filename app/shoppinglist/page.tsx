@@ -8,6 +8,7 @@ import { getShoppinglistItems } from "@/functions/getShoppinglistItems"
 import { addShoppinglistItem } from "@/functions/addShoppinglistItem";
 import { removeShoppinglistItem } from "@/functions/removeShoppinglistItem";
 
+
 export default function Home() {
   
   const [shoppingList, setShoppingList] = useState<string[]>([])
@@ -45,16 +46,20 @@ export default function Home() {
     })
   }, [])
 
+
   return (
     <div
       className="
         p-3
         space-y-8
         overflow-y-auto
+        h-full
+        w-full
       "
     >
       <h1 className="text-2xl">Einkaufsliste</h1>
-      <div
+
+      <ul
         className="
           divide-y
           divide-primary
@@ -64,10 +69,7 @@ export default function Home() {
           <ShoppingListItem 
             key={index}
             item={`${item}`}
-            isChecked={checkedItems.includes(item)}
             onItemCheck={(checked) => {
-              console.warn(checkedItems)
-              console.log(checked)
               checked ? (
                 setCheckedItems([...checkedItems, item])
                
@@ -75,11 +77,11 @@ export default function Home() {
                 
                 setCheckedItems(checkedItems.filter((checkedItem) => checkedItem !== item))
               )
-              console.log(checkedItems)
             }}
           />
         ))}
-      </div>
+      </ul> 
+
       <div className="hover:text-bright hover:cursor-pointer" onClick={handleCheckout}>Checkout</div>
       <form
         onSubmit={submitNewItem}

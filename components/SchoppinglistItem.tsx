@@ -1,25 +1,29 @@
 // components/SchoppinglistItem.tsx
 "use client"
 
+import { on } from "events"
 import { useEffect, useState } from "react"
 
 interface ShoppingListItemProps {
   item: string
   onItemCheck?: (checked: boolean) => void
-  isChecked?: boolean
+  initialChecked?: boolean
 }
 
 const ShoppingListItem: React.FC<ShoppingListItemProps> = ({
   item,
   onItemCheck = () => {},
-  isChecked = false,
+  initialChecked = false,
 }) => {
 
-  const [checked, setChecked] = useState(isChecked)
+  const [checked, setChecked] = useState(false)
 
-  const handleCheck = () => {
+  const handleCheck = async () => {
+    console.warn(checked)
     setChecked(!checked)
-    onItemCheck(checked)
+    console.log(checked)
+  
+    onItemCheck(!checked)
   }
 
   return (
@@ -38,22 +42,9 @@ const ShoppingListItem: React.FC<ShoppingListItemProps> = ({
       <p>
         {item}
       </p>
-      <input
-        id="item-checkbox"
-        type="checkbox"
-        checked={checked}
-        onChange={() => {}}
-        className="
-          appearance-none
-          rounded-lg
-          border-2
-          checked:primary
-          checked:border-transparent
-          hover:cursor-pointer
-          h-6
-          w-6
-        "
-      />
+      <button>
+        {checked ? "✅" : "❌"}
+      </button>
     </div>
   )
 }
