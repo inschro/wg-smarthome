@@ -9,7 +9,7 @@ import { addShoppinglistItem } from "@/functions/addShoppinglistItem";
 import { removeShoppinglistItem } from "@/functions/removeShoppinglistItem";
 
 
-export default function Home() {
+export default function ShoppingList() {
   
   const [shoppingList, setShoppingList] = useState<string[]>([])
 
