@@ -12,6 +12,7 @@
     "@clerk/nextjs": "^4.27.1",
     "@supabase/supabase-js": "^2.38.4",
     "next": "^14.0.1",
+    "oauth": "^0.10.0",
     "openai": "^3.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -19,6 +20,7 @@
   },
   "devDependencies": {
     "@types/node": "^20",
+    "@types/oauth": "^0.9.4",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "autoprefixer": "^10",
