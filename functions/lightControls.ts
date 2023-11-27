@@ -27,8 +27,6 @@ export const setLightOn = async (id: string) => {
       }
     })
   })
-  //wait 3 seconds
-  await new Promise(r => setTimeout(r, 3000));
   //set brightness to 100%
   await fetch("/api/hue", {
     method: "PUT",
@@ -41,7 +39,7 @@ export const setLightOn = async (id: string) => {
         "brightness": 100,
       },
       "dynamics": {
-        "duration": 4000,
+        "duration": 10000,
       }
     })
   })
