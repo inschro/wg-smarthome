@@ -21,7 +21,10 @@ export const setLightOn = (id: string) => {
       "endpoint": `/resource/light/${id}`
     },
     body: JSON.stringify({
-      "on": { "on": true }
+      "on": { "on": true },
+      "dynamics": {
+        "duration": 3000,
+      }
     })
   })
 }

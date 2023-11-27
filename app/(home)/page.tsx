@@ -27,7 +27,7 @@ export default function Home() {
   dashboardCards.push(
     <DashboardCard
       key={dashboardCards.length}
-      title="Add a new device"
+      title="Testkrams"
     >
       <div
         onClick={() => {
@@ -43,7 +43,23 @@ export default function Home() {
           })
         }}
       >
-        get
+        get devices
+      </div>
+      <div
+        onClick={() => {
+          fetch("/api/hue", {
+            method: "GET",
+            headers: {
+              "endpoint": "/resource/light",
+            },
+          }).then((res) => {
+            res.json().then((data) => {
+              console.log(data)
+            })
+          })
+        }}
+      >
+        get lights
       </div>
     </DashboardCard>
   )
