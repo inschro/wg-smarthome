@@ -1,15 +1,53 @@
+"use client"
+
 import DashboardCard from '@/components/DashboardCard'
 import ControlItem from '@/components/ControlItem'
+import { cards } from './cards'
+import { setLightOff, setLightOn } from '@/functions/lightControls'
 
 export default function Home() {
 
-  const dummyCards = new Array(10).fill(null).map((_, index) => (
-    <DashboardCard key={index} title={`Card ${index + 1}`}>
-      <ControlItem text="Control Item 1" />
-      <ControlItem text="Control Item 2" />
-      <ControlItem text="Control Item 3" />
+  const dashboardCards = cards.map((card, index) => (
+    <DashboardCard
+      key={index}
+      title={card.title}
+    >
+      {card.controlItems.map((controlItem, index) => (
+        <ControlItem
+          key={index}
+          text={controlItem.title}
+          type={controlItem.type}
+          onToggleOff={() => setLightOff(controlItem.options.deviceId)}
+          onToggleOn={() => setLightOn(controlItem.options.deviceId)}
+        />
+      ))}
     </DashboardCard>
-  ));
+  ))
+
+  dashboardCards.push(
+    <DashboardCard
+      key={dashboardCards.length}
+      title="Add a new device"
+    >
+      <div
+        onClick={() => {
+          fetch("/api/hue", {
+            method: "GET",
+            headers: {
+              "endpoint": "/resource/device",
+            },
+          }).then((res) => {
+            res.json().then((data) => {
+              console.log(data)
+            })
+          })
+        }}
+      >
+        get
+      </div>
+    </DashboardCard>
+  )
+  
   
   return (
     <div
@@ -20,7 +58,7 @@ export default function Home() {
       "
     >
       <h1 className="text-2xl pb-2">Home</h1>
-      {dummyCards}
+      {dashboardCards}
     </div>
   )
 }

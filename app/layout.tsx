@@ -21,8 +21,9 @@ export default function RootLayout({
     <html 
       lang="en"
       className="
-        bg-[url('/images/background.bmp')]
+        bg-[url('/images/background.jpg')]
         bg-repeat
+        bg-cover
         text-light
       "
     >
@@ -34,8 +35,9 @@ export default function RootLayout({
           flex
           flex-col
           justify-between
-          backdrop-blur-sm
-          backdrop-brightness-50
+          backdrop-blur-0
+          backdrop-brightness-100
+          backdrop-contrast-50
         `}>
           <SideMenu/>
           <div
