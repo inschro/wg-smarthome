@@ -13,8 +13,8 @@ export const setLightOff = (id: string) => {
   })
 }
 
-export const setLightOn = (id: string) => {
-  fetch("/api/hue", {
+export const setLightOn = async (id: string) => {
+  await fetch("/api/hue", {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
@@ -22,8 +22,23 @@ export const setLightOn = (id: string) => {
     },
     body: JSON.stringify({
       "on": { "on": true },
-      "dynamics": {
-        "duration": 3000,
+      "dimming": {
+        "brightness": 0,
+      }
+    })
+  })
+  //wait 3 seconds
+  await new Promise(r => setTimeout(r, 3000));
+  //set brightness to 100%
+  await fetch("/api/hue", {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      "endpoint": `/resource/light/${id}`
+    },
+    body: JSON.stringify({
+      "dimming": {
+        "brightness": 100,
       }
     })
   })
