@@ -1,14 +1,31 @@
 
 
-export const setLightOff = (id: string) => {
-  fetch("/api/hue", {
+export const setLightOff = async (id: string) => {
+  // set brightness to 0%
+  await fetch("/api/hue", {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
       "endpoint": `/resource/light/${id}`
     },
     body: JSON.stringify({
-      "on": { "on": false }
+      "dimming": {
+        "brightness": 0,
+      },
+      "dynamics": {
+        "duration": 10000,
+      }
+    })
+  })
+  // set light off
+  await fetch("/api/hue", {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      "endpoint": `/resource/light/${id}`
+    },
+    body: JSON.stringify({
+      "on": { "on": false },
     })
   })
 }
