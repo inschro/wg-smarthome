@@ -39,6 +39,9 @@ export const setLightOn = async (id: string) => {
     body: JSON.stringify({
       "dimming": {
         "brightness": 100,
+      },
+      "dynamics": {
+        "duration": 4000,
       }
     })
   })
