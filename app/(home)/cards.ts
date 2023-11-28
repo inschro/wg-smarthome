@@ -82,14 +82,14 @@ export const cards: Card[] = [
         title: "Bettlampe",
         type: "light",
         options: {
-          deviceId: "cb843579-f69e-4009-beb9-299e1543537d",
+          deviceId: "bd6e2457-abc6-4947-99a0-7e92103c70af",
         }
       },
       {
         title: "Tischlampe",
         type: "light",
         options: {
-          deviceId: "cb843579-f69e-4009-beb9-299e1543537d",
+          deviceId: "5f90bf66-7018-43c4-a843-21c4a4b1e934",
         }
       },
     ]

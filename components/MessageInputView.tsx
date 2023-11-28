@@ -15,8 +15,22 @@ const MessageInputView = () => {
 
   const handleMicrophoneClick = async () => {
     const text = await stt()
-    setTextInput(text)
-    tts(text)
+    console.log(text)
+    const response = await fetch('/api/gpt', {
+      method: 'POST',
+      body: JSON.stringify({
+        messages: [
+          {"role": "user", "content": text}
+        ]
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    console.log(response)
+    const message = await response.json()
+    console.log(message.content)
+    tts(message.content)
   }
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
