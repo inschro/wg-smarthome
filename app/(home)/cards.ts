@@ -22,7 +22,7 @@ export const cards: Card[] = [
         title: "Sofalampe",
         type: "light",
         options: {
-          deviceId: "cb843579-f69e-4009-beb9-299e1543537d",
+          deviceId: "1e373d20-e6e6-4c55-b3d9-2173cd2b7c70",
         }
       },
       {
