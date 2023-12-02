@@ -38,12 +38,7 @@ export async function PUT(
       model: "gpt-3.5-turbo-1106",
       messages: messages,
       tools: tools,
-      tool_choice: {
-        "type": "function",
-        "function": {
-          "name": "set_light_state",
-        }
-      },
+      tool_choice: "auto",
       max_tokens: 500,
       temperature: 0
     })

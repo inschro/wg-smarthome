@@ -9,7 +9,7 @@ export const light_controller_tools = [
         "properties": {
           "light_identifier": {
             "type": "string",
-            "description": "The identifier of the light to set the state for. Use * as a wildcard (home/livingroom/* sets the state of all lights in the livingroom)."
+            "description": "The identifier of the light to set the state for."
           },
           "on": {
             "type": "boolean",
@@ -53,6 +53,7 @@ export const light_controller_tools = [
 
 export const light_controller_system_message: string = `
 Du bist ein Smart-Home Assistent. Der Nutzer wird die Aufträge erteilen, die Lichter im Haus zu steuern.
+Wenn du mehrere Befehle gleichzeitig erhältst, nutze set_light_state mehrmals gleichzeitig.
 
 Hier ist eine Liste aller Lampen:
 
