@@ -3,11 +3,19 @@
 import { PiMicrophoneBold } from "react-icons/pi"
 import { stt } from "../functions/stt"
 import { tts } from "../functions/tts"
-import { useEffect, useState } from "react"
+import { useEffect, useRef, useState } from "react"
+import { prompt_workflow } from "@/openai_functions/promptWorkflow"
 
 const MessageInputView = () => {
 
-  const [textInput, setTextInput] = useState('');
+  const [textInputUSeState, setTextInputUseState] = useState('');
+  const formRef = useRef<HTMLFormElement>(null)
+
+  let textInput = textInputUSeState
+  const setTextInput = (text: string) => {
+    textInput = text
+    setTextInputUseState(text)
+  }
 
   useEffect(() => {
       window.scrollTo(0, document.body.scrollHeight)
@@ -15,27 +23,16 @@ const MessageInputView = () => {
 
   const handleMicrophoneClick = async () => {
     const text = await stt()
-    console.log(text)
-    const response = await fetch('/api/gpt', {
-      method: 'POST',
-      body: JSON.stringify({
-        messages: [
-          {"role": "user", "content": text}
-        ]
-      }),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-    console.log(response)
-    const message = await response.json()
-    console.log(message.content)
-    tts(message.content)
+    setTextInput(text)
+    formRef.current?.dispatchEvent(new Event('submit', { cancelable: true, bubbles: true }))
   }
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    
-  }
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log(textInput)
+    prompt_workflow(textInput)
+    //tts(message.content)
+  };
 
   return (
     <div className="
@@ -45,6 +42,8 @@ const MessageInputView = () => {
       gap-1
     ">
       <form
+        ref={formRef}
+        onSubmit={handleSubmit}
         className="
           primary
           rounded-full
@@ -69,7 +68,7 @@ const MessageInputView = () => {
             w-full
           "
           type="text" 
-          value={textInput}
+          value={textInputUSeState}
           onChange={e => setTextInput(e.target.value)}
         />
         <button
@@ -79,10 +78,6 @@ const MessageInputView = () => {
             transition
           "
           type="submit"
-          onClick={e => {
-            e.preventDefault()
-            tts(textInput)
-          }}
         >
           Send
         </button>
