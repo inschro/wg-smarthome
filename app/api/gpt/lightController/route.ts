@@ -40,7 +40,7 @@ export async function PUT(
       tools: tools,
       tool_choice: "auto",
       max_tokens: 500,
-      temperature: 0
+      temperature: 0.2
     })
     return NextResponse.json(response.choices[0].message)
   } catch (error) {
