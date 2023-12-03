@@ -12,7 +12,8 @@ export const light_controller_tools = [
             "description": "The identifier of the light to set the state for."
           },
           "on": {
-            "type": "boolean",
+            "type": "string",
+            "enum": ["on", "off"],
           },
           "brightness": {
             "type": "number",
@@ -59,14 +60,8 @@ Hier ist eine Liste aller Lampen:
 
 home/room_livingroom/light_sofa
 home/room_livingroom/light_table
-home/room_hallway/light_front
-home/room_hallway/light_aft
 home/room_ingo/light_desk
 home/room_ingo/light_bed
-home/room_johannes/light_1
-home/room_jonas/light_1
-home/room_kitchen/light_1
 
-Nutze * als Wildcard, um alle Lampen in einem Raum zu steuern (z.B. home/room_livingroom/*).
 
 `

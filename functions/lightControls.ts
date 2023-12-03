@@ -46,17 +46,16 @@ export const light_URI_mapping: { [key: string]: string } = {
 export const set_light_state = ({
   light_identifier,
   on,
-  dimming,
+  brightness,
+  brightness_delta,
   color,
   color_temperature,
   color_temperature_delta
 }: {
   light_identifier: string,
-  on?: boolean,
-  dimming?: {
-    brightness?: number,
-    brightness_delta?: number
-  },
+  on?: string,
+  brightness?: number,
+  brightness_delta?: number,
   color?: {
     x?: number,
     y?: number
@@ -64,36 +63,66 @@ export const set_light_state = ({
   color_temperature?: number,
   color_temperature_delta?: number
 }) => {
-  // get all light ids considering the wildcards like home/room_livingroom/*
-  let ids: string[] = []
-  if (light_identifier.endsWith("*")) {
-    const prefix = light_identifier.slice(0, -1)
-    for (const key of Object.keys(light_URI_mapping)) {
-      if (key.startsWith(prefix)) {
-        ids.push(light_URI_mapping[key])
+
+  const id = light_URI_mapping[light_identifier]
+  let body: {
+    on?: { on: boolean },
+    dimming?: {
+      brightness?: number,
+    },
+    dimming_delta?: {
+      action: "up" | "down",
+      brightness_delta: number
+    },
+    color?: {
+      xy?: {
+        x?: number,
+        y?: number
       }
+    },
+    color_temperature?: {
+      mirek: number
+    },
+    color_temperature_delta?: {
+      action: "up" | "down",
+      mirek_delta: number
     }
-  } else {
-    ids.push(light_URI_mapping[light_identifier])
+  } = {}
+  if (on) {
+    body["on"] = { "on": on==="on" }
   }
-  console.log("ids:", ids)
-  for (const id of ids) {
-    fetch("/api/hue", {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        "endpoint": `/resource/light/${id}`
-      },
-      body: JSON.stringify({
-        "on": { "on": on },
-        "dimming": {
-          "brightness": 100,
-        },
-        "dynamics": {
-          "duration": 1000,
-        }
-      })
-    })
+  if (brightness) {
+    body["dimming"] = { "brightness": brightness }
   }
-  
+  if (brightness_delta) {
+    if (brightness_delta > 0) {
+      body["dimming_delta"] = { action: "up", brightness_delta: brightness_delta }
+    } else {
+      body["dimming_delta"] = { action: "down", brightness_delta: -brightness_delta }
+    }
+  }
+  if (color) {
+    body["color"] = { xy: { x: color.x, y: color.y } }
+  }
+  if (color_temperature) {
+    body["color_temperature"] = { mirek: color_temperature }
+  }
+  if (color_temperature_delta) {
+    if (color_temperature_delta > 0) {
+      body["color_temperature_delta"] = { action: "up", mirek_delta: color_temperature_delta }
+    } else {
+      body["color_temperature_delta"] = { action: "down", mirek_delta: -color_temperature_delta }
+    }
+  }
+
+  console.log("body:", body)
+
+  fetch("/api/hue", {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      "endpoint": `/resource/light/${id}`
+    },
+    body: JSON.stringify(body)
+  })
 }
