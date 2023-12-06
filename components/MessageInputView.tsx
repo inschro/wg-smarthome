@@ -5,11 +5,13 @@ import { stt } from "../functions/stt"
 import { tts } from "../functions/tts"
 import { useEffect, useRef, useState } from "react"
 import { prompt_workflow } from "@/openai_functions/promptWorkflow"
+import { useRouter } from "next/navigation"
 
 const MessageInputView = () => {
 
   const [textInputUSeState, setTextInputUseState] = useState('');
   const formRef = useRef<HTMLFormElement>(null)
+  const router = useRouter()
 
   let textInput = textInputUSeState
   const setTextInput = (text: string) => {
@@ -28,9 +30,10 @@ const MessageInputView = () => {
   }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+    //e.preventDefault();
     console.log(textInput)
     prompt_workflow(textInput)
+    router.refresh()
     //tts(message.content)
   };
 

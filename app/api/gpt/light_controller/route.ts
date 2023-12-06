@@ -3,7 +3,7 @@ import OpenAI from "openai"
 import {
   light_controller_tools, 
   light_controller_system_message,
-} from "@/app/api/gpt/lightController/lightController"
+} from "@/app/api/gpt/light_controller/lightController"
 import { ChatCompletionMessageParam } from "openai/resources/index.mjs"
 
 const configuration = {

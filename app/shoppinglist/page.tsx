@@ -4,9 +4,11 @@
 import ShoppingListItem from "@/components/SchoppinglistItem";
 import { useEffect, useState } from "react";
 import { HiOutlinePlus } from "react-icons/hi";
-import { getShoppinglistItems } from "@/functions/getShoppinglistItems"
-import { addShoppinglistItem } from "@/functions/addShoppinglistItem";
-import { removeShoppinglistItem } from "@/functions/removeShoppinglistItem";
+import {
+  getShoppinglistItems,
+  addShoppinglistItem,
+  removeShoppinglistItem,
+} from "@/functions/shoppingList";
 
 
 export default function ShoppingList() {
