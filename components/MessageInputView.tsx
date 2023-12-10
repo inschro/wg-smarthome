@@ -30,7 +30,7 @@ const MessageInputView = () => {
   }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    //e.preventDefault();
+    e.preventDefault();
     console.log(textInput)
     prompt_workflow(textInput)
     router.refresh()
