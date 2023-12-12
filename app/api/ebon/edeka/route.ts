@@ -4,6 +4,8 @@ export async function GET(req: Request) {
 
   console.log("GET request received.")
 
+  return new Response("check")
+/*
   const isAuthenticated = checkAuthentication(req);
   if (!isAuthenticated) {
     return { status: 401, body: 'Unauthorized' };
@@ -23,7 +25,7 @@ export async function GET(req: Request) {
 
   const pdfBuffer = Buffer.from(content, 'base64');
 
-  return new Response("check")
+  return new Response("check")*/
 }
 
 function checkAuthentication(req: Request): boolean {
