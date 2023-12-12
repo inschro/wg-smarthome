@@ -4,7 +4,12 @@ export async function GET(req: Request) {
 
   console.log("GET request received.")
 
-  return new Response("check")
+  const response =  new Response("check")
+  response.headers.set('Access-Control-Allow-Origin', '*');
+  response.headers.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+  response.headers.set('Access-Control-Allow-Headers', 'Content-Type');
+
+  return response
 /*
   const isAuthenticated = checkAuthentication(req);
   if (!isAuthenticated) {
