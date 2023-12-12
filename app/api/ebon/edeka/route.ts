@@ -22,6 +22,7 @@ export async function POST(req: Request) {
   console.log("POST request received.")
 
   return new Response("POST request received.")
+  /*
   if (req.headers.get('Content-Type') !== 'application/json') {
     return { status: 400, body: 'Bad Request, Content-Type must be application/json' };
   }
@@ -37,5 +38,5 @@ export async function POST(req: Request) {
   const pdfBuffer = Buffer.from(content, 'base64');
 
 
-  return { status: 200 };
+  return { status: 200 };*/
 }
