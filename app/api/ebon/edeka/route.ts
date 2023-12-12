@@ -1,28 +1,14 @@
-/*
-//function that sends the pdf to the api. attachment is a gmail attachment object of the pdf
-function sendPdfToApi(attachment) {
-  const apiEndpoint = '<this endpoint>';
-  const payload = {
-    filename: attachment.getName(),
-    mimeType: attachment.getContentType(),
-    content: Utilities.base64Encode(attachment.getBytes())
-  };
 
-  const options = {
-    'method' : 'post',
-    'contentType': 'application/json',
-    'payload' : JSON.stringify(payload)
-  };
 
-  UrlFetchApp.fetch(apiEndpoint, options);
-}
-*/
 export async function GET(req: Request) {
 
-  console.log("POST request received.")
+  console.log("GET request received.")
 
-  return new Response("POST request received.")
-  /*
+  const isAuthenticated = checkAuthentication(req);
+  if (!isAuthenticated) {
+    return { status: 401, body: 'Unauthorized' };
+  }
+  
   if (req.headers.get('Content-Type') !== 'application/json') {
     return { status: 400, body: 'Bad Request, Content-Type must be application/json' };
   }
@@ -37,6 +23,10 @@ export async function GET(req: Request) {
 
   const pdfBuffer = Buffer.from(content, 'base64');
 
+  return new Response("check")
+}
 
-  return { status: 200 };*/
+function checkAuthentication(req: Request): boolean {
+  const authToken = req.headers.get('Authorization');
+  return authToken === 'DucksMakeTheBestPasswords';
 }
