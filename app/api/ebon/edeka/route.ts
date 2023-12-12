@@ -17,7 +17,7 @@ function sendPdfToApi(attachment) {
   UrlFetchApp.fetch(apiEndpoint, options);
 }
 */
-export async function POST(req: Request) {
+export async function GET(req: Request) {
 
   console.log("POST request received.")
 
