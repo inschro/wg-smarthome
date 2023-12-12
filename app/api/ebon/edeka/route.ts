@@ -21,7 +21,7 @@ export async function POST(req: Request) {
 
   console.log("POST request received.")
 
-  return { status: 200 };
+  return new Response("POST request received.")
   if (req.headers.get('Content-Type') !== 'application/json') {
     return { status: 400, body: 'Bad Request, Content-Type must be application/json' };
   }
