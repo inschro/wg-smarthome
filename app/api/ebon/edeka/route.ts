@@ -4,17 +4,17 @@ export async function POST(req: Request) {
 
   const isAuthenticated = checkAuthentication(req)
   if (!isAuthenticated) {
-    return { status: 401, body: 'Unauthorized, Authentication token is incorrect' }
+    return new Response("Unauthorized, Authentication token is incorrect", { status: 401 }) 
   }
   
   if (req.headers.get('Content-Type') !== 'application/json') {
-    return { status: 400, body: 'Bad Request, Content-Type must be application/json' }
+    return new Response("Bad Request, Content-Type must be application/json", { status: 400 })
   }
 
   const body = await req.json()
 
   if (!body.filename || !body.mimeType || !body.content) {
-    return { status: 400, body: 'Bad Request' }
+    return new Response("Bad Request, missing filename, mimeType or content", { status: 400 })
   }
 
   const { filename, mimeType, content } = body
