@@ -16,7 +16,7 @@ export const config = {
   matcher: [
     "/((?!.+[\\w]+$|_next).*)",
     "/",
-    "/(api).(?!ebon)(.*)",
+    "/(api)((?!ebon).*)",
     "/(trpc)(.*)"
   ],
 };
