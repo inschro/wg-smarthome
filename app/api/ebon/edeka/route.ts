@@ -20,8 +20,13 @@ export async function POST(req: Request) {
     const { filename, mimeType, content } = body
 
     const pdfBuffer = Buffer.from(content, 'base64')
-    const pdfData = await pdfParser(pdfBuffer)
+    //const pdfData = await pdfParser(pdfBuffer)
 
+    const pdfData = {
+      filename: "test.pdf",
+      mimeType: "application/pdf",
+      content: "test"
+    }
     return new Response(JSON.stringify(pdfData), { status: 200 })
   } catch (e) {
     return new Response("An error occured", { status: 500 })
