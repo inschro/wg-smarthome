@@ -2,7 +2,7 @@
 
 export async function GET(req: Request) {
 
-  console.log("GET request received.")
+  console.log("GET request received.\n\n")
 
   const response =  new Response("check")
 
